@@ -17,14 +17,14 @@
  */
 package org.jrebirth.af.core.link;
 
-import static org.jrebirth.af.core.resource.Resources.create;
-
 import org.jrebirth.af.api.resource.i18n.JRLevel;
 import org.jrebirth.af.api.resource.i18n.MessageItem;
 import org.jrebirth.af.core.log.JRebirthMarkers;
 import org.jrebirth.af.core.resource.i18n.LogMessage;
 import org.jrebirth.af.core.resource.i18n.Message;
 import org.jrebirth.af.core.resource.i18n.MessageContainer;
+
+import static org.jrebirth.af.core.resource.Resources.create;
 
 /**
  * The class <strong>LinkMessages</strong>.
@@ -67,6 +67,9 @@ public interface LinkMessages extends MessageContainer {
     MessageItem COMPONENT_RELEASE_ERROR = create(new LogMessage("jrebirth.link.componentReleaseError", JRLevel.Error, JRebirthMarkers.LINK));
 
     /** NotifierBase. */
+
+    /** "Local facade not found in : {0}". */
+    MessageItem LOCAL_FACADE_NOT_FOUND = create(new LogMessage("jrebirth.link.localFacadeNotFound", JRLevel.Error, JRebirthMarkers.FACADE));
 
     /** "Failed to send Wave". */
     MessageItem WAVE_SENDING_ERROR = create(new LogMessage("jrebirth.link.waveSendingError", JRLevel.Error, JRebirthMarkers.WAVE));

@@ -17,23 +17,7 @@
  */
 package org.jrebirth.af.core.component.basic;
 
-import static org.jrebirth.af.core.wave.WBuilder.wave;
-
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-import org.jrebirth.af.api.annotation.AfterInit;
-import org.jrebirth.af.api.annotation.BeforeInit;
-import org.jrebirth.af.api.annotation.OnRelease;
-import org.jrebirth.af.api.annotation.PriorityLevel;
-import org.jrebirth.af.api.annotation.Releasable;
-import org.jrebirth.af.api.annotation.SkipAnnotation;
+import org.jrebirth.af.api.annotation.*;
 import org.jrebirth.af.api.command.Command;
 import org.jrebirth.af.api.command.CommandBean;
 import org.jrebirth.af.api.component.basic.Component;
@@ -65,6 +49,12 @@ import org.jrebirth.af.core.util.CheckerUtility;
 import org.jrebirth.af.core.util.ClassUtility;
 import org.jrebirth.af.core.util.ObjectUtility;
 import org.jrebirth.af.core.wave.JRebirthItems;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+import java.util.*;
+
+import static org.jrebirth.af.core.wave.WBuilder.wave;
 
 /**
  *
@@ -109,6 +99,9 @@ public abstract class AbstractComponent<C extends Component<C>> extends Abstract
      * @return the notifier retrieved from global facade
      */
     private Notifier getNotifier() {
+        if (localFacade() == null) {
+            LOGGER.error(LOCAL_FACADE_NOT_FOUND, getClass().getName());
+        }
         return localFacade().globalFacade().notifier();
     }
 
